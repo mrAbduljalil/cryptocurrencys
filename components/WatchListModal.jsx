@@ -3,6 +3,7 @@ import { Box, Modal, Typography, Card, CardContent, Button } from "@mui/material
 import { CryptoState } from "../context/store";
 import Image from "next/image";
 
+
 const style = {
   position: 'fixed',
   top: '50%',

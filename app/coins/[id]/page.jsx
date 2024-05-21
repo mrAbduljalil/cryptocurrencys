@@ -9,7 +9,10 @@
   import { useParams } from "next/navigation";
   import { useEffect, useState } from "react";
   import parse from "html-react-parser";
-  import Image from "next/image";
+import Image from "next/image";
+
+
+  
   
   const Page = () => {
     const [coin, setCoin] = useState(null);
@@ -35,10 +38,12 @@
         <div className="sidebar">
         <Image
           src={coin?.image.large}
-          alt={coin?.name}
-          height={200}
-          style={{ marginBottom: 20 }}
-        />
+           alt={coin?.name}
+           width={200} 
+           height={200}
+           style={{ marginBottom: 20 }}
+            />
+
           <Typography className="heading" variant="h4">
             {coin?.name}
           </Typography>

@@ -6,8 +6,7 @@ const Home = () => {
     <main>
     <Banner />
     <CoinsTable />
-    {/* <Accordions /> */}
-  </main>
+   </main>
   )
 }
 

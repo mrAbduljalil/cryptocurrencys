@@ -2,7 +2,7 @@
 "use client";
 import { CryptoState } from "@/context/store";
 import { IoMdEye } from "react-icons/io";
-import Image from "next/image";
+
 import {
   Container,
   LinearProgress,
@@ -22,6 +22,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { numberWithCommas } from "./Carousel";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 
 const CoinsTable = () => {
   const [search, setSearch] = useState("");
