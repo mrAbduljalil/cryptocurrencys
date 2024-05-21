@@ -54,15 +54,17 @@ const CoinInfo = ({ coin }) => {
   const [days, setDays] = useState(1);
   const { currency } = CryptoState();
 
-  const fetchHistoricalData = async () => {
-    const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=${currency}&days=${days}`);
-    setHistoricData(data.prices);
-  };
+
 
   useEffect(() => {
+    const fetchHistoricalData = async () => {
+      const { data } = await axios.get(`https://api.coingecko.com/api/v3/coins/${coin.id}/market_chart?vs_currency=${currency}&days=${days}`);
+      setHistoricData(data.prices);
+    };
+  
     fetchHistoricalData();
-    
   }, [coin.id, currency, days]);
+  
 
   const darkTheme = createTheme({
     palette: {

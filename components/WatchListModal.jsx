@@ -1,6 +1,7 @@
  
 import { Box, Modal, Typography, Card, CardContent, Button } from "@mui/material";
 import { CryptoState } from "../context/store";
+import Image from "next/image";
 
 const style = {
   position: 'fixed',
@@ -44,7 +45,7 @@ const WatchlistModal = ({ open, handleClose }) => {
           {watchlist.map((coin) => (
             <Card key={coin.id} sx={{ margin: '10px 0',  borderRadius: '10px', width:200,height:250, textAlign:'center' }}>
               <CardContent>
-                <img src={coin.img} alt={coin.name} height="100" style={{ marginBottom: 10 }} />
+              <Image src={coin.img} alt={coin.name} height="100" width="100" style={{ marginBottom: 10 }} />
                 <Typography variant="h6">{coin.name}</Typography>
                 <Typography variant="body1">$ {coin.price}</Typography>
                 <Button className="removeBtn" onClick={() => handleRemove(coin)}>Remove</Button>

@@ -46,19 +46,19 @@ export default function CalculatorModal(props) {
       }
       init();
     }
-  }, [rates]);
+  }, [rates, handleAmount1Change]);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function format(number) {
+  const format = useCallback((number) => {
     return number.toFixed(4);
-  }
-
-  function handleAmount1Change(amount1) {
+  }, []);
+  
+  const handleAmount1Change = useCallback((amount1) => {
     setAmount2(format((amount1 * rates[currency2]) / rates[currency1]));
     setAmount1(amount1);
-  }
+  }, [rates, currency1, currency2, format]);
 
   function handleCurrency1Change(currency1) {
     setAmount2(format((amount1 * rates[currency2]) / rates[currency1]));

@@ -9,19 +9,20 @@
   import { useParams } from "next/navigation";
   import { useEffect, useState } from "react";
   import parse from "html-react-parser";
-
+  import Image from "next/image";
+  
   const Page = () => {
     const [coin, setCoin] = useState(null);
 
     const { currency, symbol } = CryptoState();
     const { id } = useParams();
 
-    const fetchCoins = async () => {
-      const { data } = await axios.get(SingleCoin(id));
-      setCoin(data);
-    };
-
     useEffect(() => {
+      const fetchCoins = async () => {
+        const { data } = await axios.get(SingleCoin(id));
+        setCoin(data);
+      };
+    
       if (id) {
         fetchCoins();
       }
@@ -32,12 +33,12 @@
     return (
       <div className="container">
         <div className="sidebar">
-          <img
-            src={coin?.image.large}
-            alt={coin?.name}
-            height="200"
-            style={{ marginBottom: 20 }}
-          />
+        <Image
+          src={coin?.image.large}
+          alt={coin?.name}
+          height={200}
+          style={{ marginBottom: 20 }}
+        />
           <Typography className="heading" variant="h4">
             {coin?.name}
           </Typography>

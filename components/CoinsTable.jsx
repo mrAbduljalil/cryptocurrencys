@@ -2,6 +2,7 @@
 "use client";
 import { CryptoState } from "@/context/store";
 import { IoMdEye } from "react-icons/io";
+import Image from "next/image";
 import {
   Container,
   LinearProgress,
@@ -25,9 +26,10 @@ import { useRouter } from "next/navigation";
 const CoinsTable = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const router = useRouter();
 
   const { currency, symbol, coins, loading, fetchCoins, watchlist, setWatchlist } = CryptoState();
-  const router = useRouter();
+  
 
   useEffect(() => {
     fetchCoins();
@@ -111,10 +113,11 @@ const CoinsTable = () => {
                           scope="row"
                           style={{ display: "flex", gap: 15 }}
                         >
-                          <img
+                         <Image
                             src={row?.image}
                             alt={row.name}
-                            height="50"
+                            height={50}
+                            width={50}
                             style={{ marginBottom: 10 }}
                           />
                           <div

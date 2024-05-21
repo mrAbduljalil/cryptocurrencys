@@ -6,6 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
+import Image from 'next/image';
 
 export function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -14,14 +15,12 @@ export function numberWithCommas(x) {
 const Carousel = () => {
   const [trending, setTrending] = useState([]);
   const { currency, symbol } = CryptoState();
-
-  const fetchTrendingCoins = async () => {
-    const { data } = await axios.get(TrendingCoins(currency));
-
-    setTrending(data);
-  };
-
   useEffect(() => {
+    const fetchTrendingCoins = async () => {
+      const { data } = await axios.get(TrendingCoins(currency));
+      setTrending(data);
+    };
+  
     fetchTrendingCoins();
   }, [currency]);
 
@@ -29,13 +28,18 @@ const Carousel = () => {
     let profit = coin?.price_change_percentage_24h >= 0;
 
     return (
-      <Link href={`/coins/${coin.id}`} className="carousel-item">
-        <img
-          src={coin?.image}
-          alt={coin.name}
-          height="80"
-          style={{ marginBottom: 10 }}
-        />
+      <Link href={`/coins/${coin.id}`} className="carousel-item" key={coin.id}>
+            {coin?.image ? (
+          <Image
+            src={coin.image}
+            alt={coin.name || "Cryptocurrency"}
+            height={80}
+            width={80}
+            style={{ marginBottom: 10 }}
+          />
+        ) : (
+          <div style={{ height: 80, marginBottom: 10 }}>No Image</div>
+        )}
         <span>
           {coin.symbol} &nbsp;
           <span
