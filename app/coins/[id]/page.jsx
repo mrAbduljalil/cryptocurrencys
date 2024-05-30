@@ -9,12 +9,7 @@
   import { useParams } from "next/navigation";
   import { useEffect, useState } from "react";
   import parse from "html-react-parser";
-import Image from "next/image";
-  
-
-
-
-  
+import Image from "next/image";  
   
   const Page = () => {
     const [coin, setCoin] = useState(null);
