@@ -4,6 +4,8 @@ import { CryptoState } from "../context/store";
 import Image from "next/image";
 
 
+
+
 const style = {
   position: 'fixed',
   top: '50%',

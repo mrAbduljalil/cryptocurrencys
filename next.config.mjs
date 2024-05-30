@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['assets.coingecko.com'],
-    },
+  images: {
+    domains: ['coin-images.coingecko.com'],
+  },
   };
   
   export default nextConfig;
